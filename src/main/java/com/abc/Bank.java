@@ -13,6 +13,13 @@ public class Bank {
     public void addCustomer(Customer customer) {
         customers.add(customer);
     }
+   
+    //Aug-Deepak
+    public List<Customer> getCustomerList()
+    {    	
+		return customers;    	
+    }    
+    //
 
     public String customerSummary() {
         String summary = "Customer Summary";
@@ -34,13 +41,14 @@ public class Bank {
         return total;
     }
 
-    public String getFirstCustomer() {
-        try {
-            customers = null;
+    public String getFirstCustomer() throws Exception {
+          	if(customers != null && !customers.isEmpty())
+        	{
             return customers.get(0).getName();
-        } catch (Exception e){
-            e.printStackTrace();
-            return "Error";
-        }
+        	}else
+        	{
+        		throw new Exception("Customer not found..");
+        	}
+      
     }
 }
